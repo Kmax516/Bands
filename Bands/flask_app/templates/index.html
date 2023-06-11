@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>log_and_reg</title>
+</head>
+<body>
+    <div class="d-flex justify-content-around">
+        <form action="/register" method="post" class="col-3 p-3 bg-success text-light">
+            <h2 class="text-warning">Register</h2>
+            {% with messages = get_flashed_messages(category_filter=["regError"]) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <h3>Try again</h3>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="verify">Confirm Password:</label>
+                <input type="password" name="verify" class="form-control">
+            </div>
+            <input type="submit" value="Register" class="btn btn-warning">
+        </form>
+        <form action="/login" method="post" class="col-3 p-3 bg-success text-light">
+            <h2 class="text-warning">Login</h2>
+            {% with messages = get_flashed_messages(category_filter=["logError"]) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <h3>Try again</h3>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            
+            <input type="submit" value="Login" class="btn btn-warning">
+        </form>
+    </div>
+</body>
+</html> 
